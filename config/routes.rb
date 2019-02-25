@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'propertys/index'
+  get 'properties/index'
 
   resources :properties
 
