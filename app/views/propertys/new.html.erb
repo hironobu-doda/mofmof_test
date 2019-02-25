@@ -1,0 +1,29 @@
+<% form_for(model: Propertie.new, local: true) do |form| %>
+  <div class = "propertie">
+    <%= form.label :物件名 %>
+    <%= form.text_filed :name %>
+  </div>
+
+  <div class="propertie">
+    <%= form.label :賃料 %>
+    <%= form.text_filed :money %>
+  </div>
+
+  <div class="propertie">
+    <%= form.label :住所 %>
+    <%= form.text_filed :address %>
+  </div>
+
+  <div class="propertie">
+    <%= form.label :築年数 %>
+    <%= form.text_filed :age %>
+  </div>
+
+  <div class="propertie">
+    <%= form.label :備考 %>
+    <%= form.text_area :content %>
+  </div>
+
+<%= form.submit %>
+
+<% end %>
