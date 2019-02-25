@@ -6,8 +6,13 @@ class PropertiesController < ApplicationController
     @property = Property.new
   end
 
-  # def create
-  # end
+  def create
+    Property.create(name:params[:property][:name],
+                    money:params[:property][:money],
+                    address:params[:property][:address],
+                    age:params[:property][:age],
+                    content:params[:property][:content])
+  end
   #
   # def edit
   # end
