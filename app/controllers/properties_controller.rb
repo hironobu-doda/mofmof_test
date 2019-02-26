@@ -35,7 +35,7 @@ before_action :set_property, only: [:show, :edit, :update, :destroy]
 
   def destroy
     @property.destroy
-    redirect_to propaties_path, notice: "削除しました"
+    redirect_to properties_path, notice: "削除しました"
   end
 
   private
