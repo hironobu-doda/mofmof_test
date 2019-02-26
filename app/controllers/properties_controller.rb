@@ -7,7 +7,11 @@ before_action :set_property, only: [:show, :edit, :update, :destroy]
   end
 
   def new
-    @property = Property.new
+    if params[:back]
+     @property = Property.new(property_params)
+   else
+     @property = Property.new
+   end
   end
 
   def create
@@ -36,6 +40,11 @@ before_action :set_property, only: [:show, :edit, :update, :destroy]
   def destroy
     @property.destroy
     redirect_to properties_path, notice: "削除しました"
+  end
+
+  def confirm
+    @property = Property.new(property_params)
+    render :new if @property.invalid?
   end
 
   private

@@ -1,0 +1,26 @@
+<h3>以下の内容で、送信する</h3>
+
+<%= form_for @property, url: properties_path do |form| %>
+  <%= form.hidden_field :name %>
+  <%= form.hidden_field :money %>
+  <%= form.hidden_field :address %>
+  <%= form.hidden_field :age %>
+  <%= form.hidden_field :content %>
+
+  <p>物件名:<%= @property.name %></p>
+  <p>賃料:<%= @property.money %></p>
+  <p>住所:<%= @property.address %></p>
+  <p>築年数:<%= @property.age %></p>
+  <p>備考:<%= @property.content %></p>
+   <%= form.submit  "登録する" %>
+<% end %>
+
+
+<%= form_for @property, url: new_property_path, method: 'get' do |form| %>
+  <%= form.hidden_field :name %>
+  <%= form.hidden_field :money %>
+  <%= form.hidden_field :address %>
+  <%= form.hidden_field :age %>
+  <%= form.hidden_field :content %>
+  <%= form.submit '戻る' %>
+<% end %>
