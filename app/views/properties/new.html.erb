@@ -1,4 +1,17 @@
 <%= form_for @property do |form| %>
+
+  <% if @property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @property.errors.count %>件のエラーがあります。</h2>
+      <ul>
+
+      <% @property.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class = "property">
     <%= form.label :物件名 %>
     <%= form.text_field :name %>
@@ -24,6 +37,6 @@
     <%= form.text_area :content %>
   </div>
 
-<%= form.submit :登録する %>
+  <%= form.submit :登録する %>
 
 <% end %>
