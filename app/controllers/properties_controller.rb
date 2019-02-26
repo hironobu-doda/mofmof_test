@@ -22,6 +22,13 @@ before_action :set_property, only: [:show, :edit, :update, :destroy]
     else
       render 'new'
     end
+
+    @nearest_station = Nearest_station.create(nearest_station_params)
+    if @nearest_station.save
+      redirect_to properties_path, notice: "作成しました"
+    else
+      render 'new'
+    end
   end
 
   def show
@@ -52,6 +59,10 @@ before_action :set_property, only: [:show, :edit, :update, :destroy]
 
   def property_params
     params.require(:property).permit(:name, :money, :address, :age, :content)
+  end
+
+  def nearest_station_params
+    params.require(:nearest_station).permit(:route, :station, :minute)
   end
 
   def set_property
