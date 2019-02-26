@@ -7,11 +7,8 @@ class PropertiesController < ApplicationController
   end
 
   def create
-    Property.create(name:params[:property][:name],
-                    money:params[:property][:money],
-                    address:params[:property][:address],
-                    age:params[:property][:age],
-                    content:params[:property][:content])
+    Property.create(property_params)
+    redirect_to new_property_path
   end
   #
   # def edit
@@ -22,5 +19,11 @@ class PropertiesController < ApplicationController
   #
   # def destroy
   # end
+
+  private
+
+  def property_params
+    params.require(:property).permit(:name, :money, :address, :age, :content)
+  end
 
 end
