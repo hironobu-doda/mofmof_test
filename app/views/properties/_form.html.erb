@@ -37,8 +37,59 @@
     <%= form.text_area :content %>
   </div>
 
-  <%= form.submit :登録する %>
+<% end %>
+
+
+<%= form_for @nearest_station ,url: choose_new_or_edit do |form| %>
+
+  <% if @nearest_station.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @nearest_station.errors.count %>件のエラーがあります。</h2>
+      <ul>
+
+      <% @nearest_station.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <h2>最寄り駅1</h2>
+
+  <div class="property">
+  <%= form.label :路線名 %>
+  <%= form.text_field :route %>
+  </div>
+
+  <div class="property">
+  <%= form.label :駅名 %>
+  <%= form.text_field :station %>
+  </div>
+
+  <div class="property">
+  <%= form.label :徒歩分数 %>
+  <%= form.text_field :minute %>
+  </div>
+
+  <h2>最寄り駅2</h2>
+
+  <div class="property">
+  <%= form.label :路線名 %>
+  <%= form.text_field :route %>
+  </div>
+
+  <div class="property">
+  <%= form.label :駅名 %>
+  <%= form.text_field :station %>
+  </div>
+
+  <div class="property">
+  <%= form.label :徒歩分数 %>
+  <%= form.text_field :minute %>
+  </div>
 
 <% end %>
+
+<%= form.submit :登録する %>
 
 <%= link_to "一覧に戻る", properties_path %>

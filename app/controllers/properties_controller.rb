@@ -7,10 +7,11 @@ before_action :set_property, only: [:show, :edit, :update, :destroy]
   end
 
   def new
+    @nearest_station = Nearest_station.new
     if params[:back]
-     @property = Property.new(property_params)
+      @property = Property.new(property_params)
    else
-     @property = Property.new
+      @property = Property.new
    end
   end
 
