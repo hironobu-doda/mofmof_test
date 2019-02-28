@@ -5,6 +5,8 @@
 <p>築年数:<%= @property.age %>年</p>
 <p>備考:<%= @property.content %></p>
 
+<Hr>
+
 <% @property.nearest_stations.each do |nearest_station| %>
 <h2>最寄り駅</h2>
 <p>路線名:<%= nearest_station.route %></p>

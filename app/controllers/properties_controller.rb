@@ -29,7 +29,7 @@ before_action :set_nearest_station, only: [:show, :edit, :update, :destroy]
   end
 
   def update
-    if @property.update(property_params)
+    if @property.update(update_property_params)
       redirect_to properties_path, notice: "編集しました"
     else
       render 'edit'
@@ -45,6 +45,10 @@ before_action :set_nearest_station, only: [:show, :edit, :update, :destroy]
 
   def property_params
     params.require(:property).permit(:name, :money, :address, :age, :content, nearest_stations_attributes: [:route, :station, :minute])
+  end
+
+  def update_property_params
+    params.require(:property).permit(:name, :money, :address, :age, :content, nearest_stations_attributes: [:route, :station, :minute, :_destroy, :id])
   end
 
   def set_property
