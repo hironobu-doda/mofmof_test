@@ -12,8 +12,21 @@
   <p>住所:<%= @property.address %></p>
   <p>築年数:<%= @property.age %></p>
   <p>備考:<%= @property.content %></p>
-   <%= form.submit  "登録する" %>
+
+  <%= form.fields_for :nearest_stations, url: properties_path do |form| %>
+    <%= form.hidden_field :route %>
+    <%= form.hidden_field :station %>
+    <%= form.hidden_field :minute %>
+    <% @property.nearest_stations.each do |nearest_station| %>
+      <p>最寄り駅</p>
+      <p>路線名:<%= nearest_station.route %></p>
+      <p>駅名:<%= nearest_station.station %></p>
+      <p>徒歩分数:<%= nearest_station.minute %></p>
+    <% end %>
+  <% end %>
+  <%= form.submit "登録する" %>
 <% end %>
+
 
 
 <%= form_for @property, url: new_property_path, method: 'get' do |form| %>
@@ -22,5 +35,11 @@
   <%= form.hidden_field :address %>
   <%= form.hidden_field :age %>
   <%= form.hidden_field :content %>
+
+  <%= form.fields_for :nearest_stations, url: new_property_path, method: 'get' do |form| %>
+    <%= form.hidden_field :route %>
+    <%= form.hidden_field :station %>
+    <%= form.hidden_field :minute %>
+  <% end %>
   <%= form.submit '戻る' %>
 <% end %>
