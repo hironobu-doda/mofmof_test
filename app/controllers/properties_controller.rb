@@ -9,14 +9,14 @@ before_action :set_nearest_station, only: [:show, :edit, :update, :destroy]
   end
 
   def new
-    if params[:back]
-      @property = Property.new(property_params)
-      # @property.nearest_stations.build
-
-   else
-      @property = Property.new
-      2.times { @property.nearest_stations.build }
-   end
+   #  if params[:back]
+   #    @property = Property.new(property_params)
+   #    # @property.nearest_stations.build
+   #
+   # else
+    @property = Property.new
+    2.times { @property.nearest_stations.build }
+   # end
 
     #  if params[:back]
     #    @nearest_station = NearestStation.new(property_params)
@@ -60,15 +60,15 @@ before_action :set_nearest_station, only: [:show, :edit, :update, :destroy]
     redirect_to properties_path, notice: "削除しました"
   end
 
-  def confirm
-    @property = Property.new(property_params)
-    # @property.nearest_stations.build
-
-    # render :new if @property.invalid?
-
-    # @nearest_station = NearestStation.new(property_params)
-    # render :new if @nearest_station.invalid?
-  end
+  # def confirm
+  #   @property = Property.new(property_params)
+  #   # @property.nearest_stations.build
+  #
+  #   # render :new if @property.invalid?
+  #
+  #   # @nearest_station = NearestStation.new(property_params)
+  #   # render :new if @nearest_station.invalid?
+  # end
 
   private
 

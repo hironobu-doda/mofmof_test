@@ -1,4 +1,4 @@
-<%= form_for @property, url: choose_new_or_edit do |form| %>
+<%= form_for @property, url: properties_path do |form| %>
 
   <% if @property.errors.any? %>
     <div id="error_explanation">
@@ -40,7 +40,7 @@
 
 
 
-  <%= form.fields_for :nearest_stations ,url: choose_new_or_edit do |form| %>
+  <%= form.fields_for :nearest_stations ,url: properties_path do |form| %>
 
 
 
@@ -61,7 +61,7 @@
     <%= form.text_field :minute %>
     </div>
 
-    
+
   <% end %>
 
   <%= form.submit :登録する %>
