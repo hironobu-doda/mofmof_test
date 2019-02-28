@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
   get 'properties/index'
 
-  # resources :properties
-
   resources :properties
 
-  # resources :nearest_stations do
+  # resources :nearest_stations
   #   collection do
   #     post :confirm
   #   end
